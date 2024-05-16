@@ -1,0 +1,30 @@
+{
+  "name": "solid-new-window",
+  "version": "0.0.3",
+  "description": "SolidJS component for rendering a piece of content in a new window.",
+  "license": "MIT",
+  "type": "module",
+  "module": "dist/solid-new-window.js",
+  "types": "dist/solid-new-window.d.ts",
+  "homepage": "https://github.com/deluksic/solid-new-window#readme",
+  "author": {
+    "email": "deluksic@gmail.com",
+    "name": "David Emanuel Luksic",
+    "url": "https://github.com/deluksic/solid-new-window"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.8.11"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-solid": "^2.10.2",
+    "vitest": "^1.6.0"
+  }
+}

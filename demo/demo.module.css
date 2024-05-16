@@ -1,0 +1,8 @@
+.app {
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+  background-color: aliceblue;
+}
