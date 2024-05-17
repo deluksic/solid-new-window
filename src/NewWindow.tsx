@@ -9,8 +9,8 @@ import {
 import { NewWindowContext, focusWindow } from "./NewWindowContext"
 import { copyStyles } from "./copyStyles"
 import { WindowFeatures, stringifyWindowFeatures } from "./windowFeatures"
-
-type CenteringProp = boolean | "parent" | "screen"
+import { leftTopForCentering } from "./leftTopForCentering"
+import type { CenteringProp } from "./leftTopForCentering"
 
 export type NewWindowProps = {
   ref?: (newWindow: Window) => void
@@ -21,28 +21,6 @@ export type NewWindowProps = {
   features?: WindowFeatures
   inline?: (focus: () => void) => JSX.Element
   fallback?: (reopen: () => void) => JSX.Element
-}
-
-function leftTopForCentering(center: CenteringProp, features: WindowFeatures) {
-  const { width, height } = features
-  if (width !== undefined && height !== undefined) {
-    if (center === true || center === "parent") {
-      return {
-        left: window.screenX + window.outerWidth / 2 - width / 2,
-        top: window.screenY + window.outerHeight / 2 - height / 2,
-      }
-    }
-    if (center === "screen") {
-      const { availWidth, availHeight } = window.screen
-      return {
-        left: availWidth / 2 - width / 2,
-        top: availHeight / 2 - height / 2,
-      }
-    }
-  } else if (DEV && center) {
-    // prettier-ignore
-    console.warn(`For window centering to work, 'width' and 'height' features must be provided.`);
-  }
 }
 
 export function NewWindow(props: ParentProps<NewWindowProps>) {
