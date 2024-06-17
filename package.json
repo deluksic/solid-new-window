@@ -1,6 +1,6 @@
 {
   "name": "solid-new-window",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SolidJS component for rendering a piece of content in a new window.",
   "license": "MIT",
   "type": "module",

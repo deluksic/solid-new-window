@@ -47,6 +47,7 @@ function Demo() {
             center="screen"
             inline={(focus) => <button onClick={focus}>Focus other</button>}
             fallback={(reopen) => <button onClick={reopen}>Reopen</button>}
+            containerRef={(el) => el.classList.add(ui.window ?? "")}
           >
             <Content count={count()} increment={increment} />
           </NewWindow>

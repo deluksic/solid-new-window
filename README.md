@@ -42,8 +42,10 @@ When `<NewWindow />` is mounted, a new window will be opened. When unmounted, th
 | `features` | `WindowFeatures` |   | See [window features](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#windowfeatures) for more details. |
 | `fallback` | `(reopen) => JSX.Element` |   | User can close the window at any point. What should be rendered when they do? Perhaps a re-open button? |
 | `inline` | `(focus) => JSX.Element` |   | What should be rendered while the window is opened? Perhaps a re-focus button? |
+| `openOnMount` | `boolean` | `true` | Set to `false` if you would like to opt out of automatically opening the window on mount. Instead, `fallback` will be shown. |
 | `copyStyles` | `boolean` | `true` | Copy styles from parent window's document. Only works in secure contexts! |
 | `ref`        | `(newWindow) => void` |   | Allows you to get the new window reference for manual manipulation. |
+| `containerRef`        | `(element) => void` |   | Because a `<Portal>` is used, the content will be mounted inside a `<div>`. This prop gives you access to this div. E.g. for additional styling. |
 
 ## Context hooks
 

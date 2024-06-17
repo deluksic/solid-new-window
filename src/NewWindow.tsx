@@ -17,10 +17,13 @@ export type NewWindowProps = {
   title?: string
   center?: CenteringProp
   /** @default true */
+  openOnMount?: boolean
+  /** @default true */
   copyStyles?: boolean
   features?: WindowFeatures
   inline?: (focus: () => void) => JSX.Element
   fallback?: (reopen: () => void) => JSX.Element
+  containerRef?: (element: HTMLDivElement) => void
 }
 
 export function NewWindow(props: ParentProps<NewWindowProps>) {
@@ -28,16 +31,21 @@ export function NewWindow(props: ParentProps<NewWindowProps>) {
   // reloading of the window
   const {
     features = {},
-    copyStyles: copyStylesFlag = true,
     ref,
     center,
+    copyStyles: copyStylesFlag = true,
+    openOnMount = true,
   } = props
 
-  const [retry, setRetry] = createSignal(undefined, { equals: false })
+  const [retry, setRetry] = createSignal(openOnMount, {
+    equals: false,
+  })
   const [newWindow, setNewWindow] = createSignal<Window>()
 
   createEffect(() => {
-    retry()
+    if (!retry()) {
+      return
+    }
     const newWindow = window.open(
       undefined,
       undefined,
@@ -84,13 +92,15 @@ export function NewWindow(props: ParentProps<NewWindowProps>) {
   return (
     <Show
       when={newWindow()}
-      fallback={props.fallback?.(() => setRetry())}
+      fallback={props.fallback?.(() => setRetry(true))}
       keyed
     >
       {(newWindow) => (
         <NewWindowContext.Provider value={newWindow}>
           {props.inline?.(() => focusWindow(window, newWindow))}
-          <Portal mount={newWindow.document.body}>{props.children}</Portal>
+          <Portal mount={newWindow.document.body} ref={props.containerRef}>
+            {props.children}
+          </Portal>
         </NewWindowContext.Provider>
       )}
     </Show>
