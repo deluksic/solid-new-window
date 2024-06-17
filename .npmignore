@@ -1,7 +1,8 @@
 node_modules
 .vscode
+.prettierrc
 index.html
 src
 tsconfig.json
-vite.config.json
+vite.config.ts
 demo
