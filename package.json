@@ -1,9 +1,10 @@
 {
   "name": "solid-new-window",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "SolidJS component for rendering a piece of content in a new window.",
   "license": "MIT",
   "type": "module",
+  "main": "dist/solid-new-window.js",
   "module": "dist/solid-new-window.js",
   "types": "dist/solid-new-window.d.ts",
   "homepage": "https://github.com/deluksic/solid-new-window#readme",
