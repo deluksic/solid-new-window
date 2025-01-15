@@ -96,5 +96,5 @@ function Content(props) {
 }
 ```
 
-[Live demo @ playground.solidjs.com](https://playground.solidjs.com/anonymous/a27acd54-6d33-4302-ac35-09ad5f361cc0)
+[Live demo @ playground.solidjs.com](https://playground.solidjs.com/anonymous/d7d7892c-6474-4149-ba96-7689e5d409c5)
 (`copyStyles` does not work in playground, I don't understand exactly why)
